@@ -1,0 +1,27 @@
+{
+  "name": "vinay/icecat-sdk",
+  "type": "library",
+  "description": "An easy-to-use Library to access Icecat XML Catalog",
+  "keywords": [
+    "icecat",
+    "product data",
+    "product catalog"
+  ],
+  "authors": [
+    {
+      "name": "Vinay Shah",
+      "email": "vinay.sudhir@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "guzzlehttp/guzzle": "^6.5",
+    "ext-simplexml": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rapiddive\\Icecat\\": "src/"
+    }
+  }
+}
