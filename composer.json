@@ -1,5 +1,5 @@
 {
-  "name": "vinay/icecat-sdk",
+  "name": "rapiddive/icecat-sdk",
   "type": "library",
   "description": "An easy-to-use Library to access Icecat XML Catalog",
   "keywords": [
