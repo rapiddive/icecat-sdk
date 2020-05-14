@@ -19,6 +19,8 @@ use SimpleXMLElement;
  */
 class ResultProduct
 {
+    const ATTRIBUTES = '@attributes';
+
     /**
      * @var SimpleXMLElement
      */
@@ -66,7 +68,7 @@ class ResultProduct
      */
     public function getProductAttributes()
     {
-        return $this->getProduct()->{'@attributes'};
+        return $this->getProduct()->{self::ATTRIBUTES};
     }
 
     /**
@@ -131,7 +133,7 @@ class ResultProduct
      */
     public function getSupplierName()
     {
-        return $this->getProduct()->Supplier->{'@attributes'}->Name;
+        return $this->getProduct()->Supplier->{self::ATTRIBUTES}->Name;
     }
 
     /**
@@ -140,7 +142,7 @@ class ResultProduct
      */
     public function getProductEANCode()
     {
-        return $this->getProduct()->EANCode->{'@attributes'}->EAN;
+        return $this->getProduct()->EANCode->{self::ATTRIBUTES}->EAN;
     }
 
     /**
@@ -186,7 +188,7 @@ class ResultProduct
      */
     public function getReleaseDate()
     {
-        return $this->getProduct()->ReleaseDate->Date->{'@attributes'}->Value;
+        return $this->getProduct()->ReleaseDate->Date->{self::ATTRIBUTES}->Value;
     }
 
     /**
@@ -195,7 +197,7 @@ class ResultProduct
      */
     public function getEndOfLifeDate()
     {
-        return $this->getProduct()->EndOfLifeDate->Date->{'@attributes'}->Value;
+        return $this->getProduct()->EndOfLifeDate->Date->{self::ATTRIBUTES}->Value;
     }
 
     /**
@@ -273,15 +275,15 @@ class ResultProduct
         $additionalImages = [];
         foreach ($this->getProductGallery() as $productImages) {
             foreach ($productImages as $productImage) {
-                if ($productImage->{'@attributes'}->Original === '') {
+                if ($productImage->{self::ATTRIBUTES}->Original === '') {
                     continue;
                 }
-                if (isset($productImage->{'@attributes'}->IsMain)
-                    && strtoupper($productImage->{'@attributes'}->IsMain) === 'Y'
+                if (isset($productImage->{self::ATTRIBUTES}->IsMain)
+                    && strtoupper($productImage->{self::ATTRIBUTES}->IsMain) === 'Y'
                 ) {
-                    $image = $productImage->{'@attributes'}->Original;
+                    $image = $productImage->{self::ATTRIBUTES}->Original;
                 } else {
-                    $additionalImages[] = $productImage->{'@attributes'}->Original;
+                    $additionalImages[] = $productImage->{self::ATTRIBUTES}->Original;
                 }
             }
         }
