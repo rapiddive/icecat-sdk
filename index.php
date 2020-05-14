@@ -7,7 +7,10 @@ use Rapiddive\Icecat\Model\ResultProduct;
 
 require 'vendor/autoload.php';
 
-$iceCat = new Rapiddive\Icecat\IcecatBase('crunchersweb', '85xGqb8hQ!', __DIR__);
+$username = '';
+$password = '';
+
+$iceCat = new Rapiddive\Icecat\IcecatBase($username, $password, __DIR__);
 
 /** @var FetchProduct $iceCatProduct */
 $iceCatProduct = new FetchProduct($iceCat);
