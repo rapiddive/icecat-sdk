@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Languagelist
  *
- * @copyright Copyright © 2020 Firebear Studio. All rights reserved.
- * @author    fbeardev@gmail.com
+ * @copyright Copyright © 2020 Rapid dive. All rights reserved.
+ * @author    rapiddive1@gmai.com
  */
 
 namespace Rapiddive\Icecat\Helper;

@@ -1,16 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * IcecatBase
  *
- * @copyright Copyright © 2020 Firebear Studio. All rights reserved.
- * @author    fbeardev@gmail.com
+ * @copyright Copyright © 2020 Rapid dive. All rights reserved.
+ * @author    rapiddive1@gmai.com
  */
 
 namespace Rapiddive\Icecat;
 
-
 use GuzzleHttp\Client;
-use SimpleXMLElement;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\HandlerStack;
+use Kevinrob\GuzzleCache\CacheMiddleware;
+use Kevinrob\GuzzleCache\Storage\Psr6CacheStorage;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class IcecatBase
 {
@@ -58,18 +63,34 @@ class IcecatBase
     private $password;
 
     /**
+     * @var string
+     */
+    private $cacheDir;
+
+    /**
+     * @var bool
+     */
+    private $debug = false;
+
+    /**
      * IcecatBase constructor.
      * @param string $username
      * @param string $password
      */
     public function __construct(
         string $username = '',
-        string $password = ''
+        string $password = '',
+        string $cacheDir = ''
     ) {
         $this->username = $username;
         $this->password = $password;
-
+        $this->setCachePath($cacheDir);
         $this->init();
+    }
+
+    public function setCachePath($dir)
+    {
+        $this->cacheDir = $dir . '/var/cache/icecat/';
     }
 
     /**
@@ -78,11 +99,27 @@ class IcecatBase
     protected function init()
     {
         if (!$this->guzzle) {
+            // Create a HandlerStack
+            $stack = HandlerStack::create();
+            $cache_strategy_class = '\\Kevinrob\\GuzzleCache\\Strategy\\PrivateCacheStrategy';
+            $cache_storage =
+                new Psr6CacheStorage(
+                    new FilesystemAdapter('', 0, $this->cacheDir)
+                );
+            $stack->push(
+                new CacheMiddleware(
+                    new $cache_strategy_class (
+                        $cache_storage
+                    )
+                ),
+                'cache'
+            );
             $this->guzzle = new Client(array(
                 'base_uri' => $this->apiBaseUrl,
                 'auth' => [$this->getUsername(), $this->getPassword()],
                 'headers' => $this->headers,
-                'decode_content' => true
+                'decode_content' => true,
+                'handler' => $stack
             ));
         }
         return $this->guzzle;
@@ -118,6 +155,14 @@ class IcecatBase
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * @param bool $bool
+     */
+    public function setDebug(bool $bool)
+    {
+        $this->debug = $bool;
     }
 
     /**

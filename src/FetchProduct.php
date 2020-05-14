@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * FetchProduct
  *
- * @copyright Copyright © 2020 Firebear Studio. All rights reserved.
- * @author    fbeardev@gmail.com
+ * @copyright Copyright © 2020 Rapid dive. All rights reserved.
+ * @author    rapiddive1@gmai.com
  */
 
 namespace Rapiddive\Icecat;
 
 
 use Rapiddive\Icecat\Helper\Languagelist;
+use SimpleXMLElement;
 
 class FetchProduct
 {
@@ -30,11 +33,11 @@ class FetchProduct
     }
 
     /**
-     * @param $ean
+     * @param string $ean
      * @param string $lang
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    public function getArticleByEAN($ean, $lang = null)
+    public function getArticleByEAN(string $ean, $lang = null)
     {
         if (!isset($this->products[$ean])) {
             if (!$lang) {
@@ -49,6 +52,6 @@ class FetchProduct
             $this->products[$ean] = $this->base->request($this->base->xmlEndpoint, $params);
         }
 
-        return new \SimpleXMLElement($this->products[$ean]);
+        return new SimpleXMLElement($this->products[$ean]);
     }
 }

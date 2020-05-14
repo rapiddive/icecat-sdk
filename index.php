@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
+
+use Rapiddive\Icecat\FetchProduct;
+use Rapiddive\Icecat\Model\ResultProduct;
+
 require 'vendor/autoload.php';
 
-$iceCat = new Rapiddive\Icecat\IcecatBase('crunchersweb', '85xGqb8hQ!');
+$iceCat = new Rapiddive\Icecat\IcecatBase('crunchersweb', '85xGqb8hQ!', __DIR__);
 
-$iceCatProduct = new \Rapiddive\Icecat\FetchProduct($iceCat);
+/** @var FetchProduct $iceCatProduct */
+$iceCatProduct = new FetchProduct($iceCat);
+$p = ['088698857212'];
 
-/** @var  $product */
-$product = $iceCatProduct->getArticleByEAN('0193015166462');
-
-$resultProduct = new \Rapiddive\Icecat\Model\ResultProduct($product);
-
-//$my_std_class = json_decode(json_encode($product));
-//$my_assoc_array = json_decode(json_encode($product), true);
-echo '<pre>';
-//var_dump($resultProduct->getProduct()->CategoryFeatureGroup);
-var_dump($resultProduct->getProduct());
-//var_dump($resultProduct->__callProductAttr('Code'));
-echo '</pre>';
+foreach ($p as $value) {
+    /** @var  $product */
+    var_dump($value);
+    $product = $iceCatProduct->getArticleByEAN($value);
+    $resultProduct = new ResultProduct($product);
+    var_dump($resultProduct->getShortSummaryDescription());
+}

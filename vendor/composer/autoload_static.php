@@ -14,6 +14,7 @@ class ComposerStaticInit0bda984710daeff99a94fae38741aea1
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -22,6 +23,8 @@ class ComposerStaticInit0bda984710daeff99a94fae38741aea1
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
+            'Symfony\\Polyfill\\Apcu\\' => 22,
+            'Symfony\\Component\\Cache\\' => 24,
         ),
         'R' => 
         array (
@@ -29,7 +32,14 @@ class ComposerStaticInit0bda984710daeff99a94fae38741aea1
         ),
         'P' => 
         array (
+            'Psr\\SimpleCache\\' => 16,
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Cache\\' => 10,
+        ),
+        'K' => 
+        array (
+            'Kevinrob\\GuzzleCache\\' => 21,
         ),
         'G' => 
         array (
@@ -52,13 +62,37 @@ class ComposerStaticInit0bda984710daeff99a94fae38741aea1
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
         ),
+        'Symfony\\Polyfill\\Apcu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-apcu',
+        ),
+        'Symfony\\Component\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/cache',
+        ),
         'Rapiddive\\Icecat\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Kevinrob\\GuzzleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kevinrob/guzzle-cache-middleware/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
