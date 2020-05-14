@@ -1,3 +1,5 @@
 /var/*
 !/var/.htaccess
 /vendor/*
+/.idea
+/.gitattributes
