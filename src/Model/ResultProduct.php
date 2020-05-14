@@ -274,7 +274,11 @@ class ResultProduct
         $additionalImages = [];
         foreach ($this->getProductGallery() as $productImages) {
             foreach ($productImages as $productImage) {
-                if ($productImage->{self::ATTRIBUTES}->Original === '') {
+                if (
+                    (isset($productImage->{self::ATTRIBUTES})
+                        && $productImage->{self::ATTRIBUTES}->Original === '')
+                    || !isset($productImage->{self::ATTRIBUTES})
+                ) {
                     continue;
                 }
                 if (isset($productImage->{self::ATTRIBUTES}->IsMain)
