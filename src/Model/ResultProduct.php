@@ -229,11 +229,10 @@ class ResultProduct
 
     /**
      * @param $name
-     * @param $arguments
      * @return mixed
      * @throws IcecatException
      */
-    public function __call($name, $arguments)
+    public function __call($name, $arguments = [])
     {
         return $this->getProduct()->{$name};
     }
