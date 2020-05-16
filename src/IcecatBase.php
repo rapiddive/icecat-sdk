@@ -81,6 +81,7 @@ class IcecatBase
      *
      * @param string $username
      * @param string $password
+     * @param string $cacheDir
      */
     public function __construct(
         string $username = '',
@@ -120,13 +121,13 @@ class IcecatBase
                 'cache'
             );
             $this->guzzle = new Client(
-                array(
-                'base_uri' => $this->apiBaseUrl,
-                'auth' => [$this->getUsername(), $this->getPassword()],
-                'headers' => $this->headers,
-                'decode_content' => true,
-                'handler' => $stack
-                )
+                [
+                    'base_uri' => $this->apiBaseUrl,
+                    'auth' => [$this->getUsername(), $this->getPassword()],
+                    'headers' => $this->headers,
+                    'decode_content' => true,
+                    'handler' => $stack
+                ]
             );
         }
         return $this->guzzle;
@@ -190,9 +191,9 @@ class IcecatBase
         try {
             $response = $this->guzzle->get(
                 $endpoint,
-                array(
+                [
                     'query' => $params
-                )
+                ]
             );
         } catch (RequestException $e) {
             if ($this->debug) {

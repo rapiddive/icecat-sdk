@@ -23,7 +23,7 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.1",
     "guzzlehttp/guzzle": "^6.5",
     "ext-simplexml": "*",
     "ext-json": "*",
@@ -34,6 +34,11 @@
   "autoload": {
     "psr-4": {
       "Rapiddive\\Icecat\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rapiddive\\Icecat\\Tests\\": "tests/"
     }
   },
   "require-dev": {
