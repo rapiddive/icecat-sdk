@@ -5,11 +5,10 @@ declare(strict_types=1);
  * FetchProduct
  *
  * @copyright Copyright © 2020 Rapid dive. All rights reserved.
- * @author    rapiddive1@gmai.com
+ * @author    Rapid Dive <rapiddive1@gmail.com>
  */
 
 namespace Rapiddive\Icecat;
-
 
 use Rapiddive\Icecat\Helper\Languagelist;
 use SimpleXMLElement;
@@ -33,8 +32,8 @@ class FetchProduct
     }
 
     /**
-     * @param string $ean
-     * @param string $lang
+     * @param  string $ean
+     * @param  string $lang
      * @return SimpleXMLElement
      */
     public function getArticleByEAN(string $ean, $lang = null)

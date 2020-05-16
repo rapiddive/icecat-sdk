@@ -5,7 +5,7 @@ declare(strict_types=1);
  * IcecatBase
  *
  * @copyright Copyright © 2020 Rapid dive. All rights reserved.
- * @author    rapiddive1@gmai.com
+ * @author    Rapid Dive <rapiddive1@gmail.com>
  */
 
 namespace Rapiddive\Icecat;
@@ -74,6 +74,7 @@ class IcecatBase
 
     /**
      * IcecatBase constructor.
+     *
      * @param string $username
      * @param string $password
      */
@@ -108,19 +109,21 @@ class IcecatBase
                 );
             $stack->push(
                 new CacheMiddleware(
-                    new $cache_strategy_class (
+                    new $cache_strategy_class(
                         $cache_storage
                     )
                 ),
                 'cache'
             );
-            $this->guzzle = new Client(array(
+            $this->guzzle = new Client(
+                array(
                 'base_uri' => $this->apiBaseUrl,
                 'auth' => [$this->getUsername(), $this->getPassword()],
                 'headers' => $this->headers,
                 'decode_content' => true,
                 'handler' => $stack
-            ));
+                )
+            );
         }
         return $this->guzzle;
     }
@@ -174,17 +177,19 @@ class IcecatBase
     }
 
     /**
-     * @param $endpoint
-     * @param $params
+     * @param  $endpoint
+     * @param  $params
      * @return bool|string
      */
     public function request($endpoint, $params)
     {
         try {
-            $response = $this->guzzle->get($endpoint,
+            $response = $this->guzzle->get(
+                $endpoint,
                 array(
                     'query' => $params
-                ));
+                )
+            );
         } catch (RequestException $e) {
             if ($this->debug) {
                 print $e->getMessage() . "\n";

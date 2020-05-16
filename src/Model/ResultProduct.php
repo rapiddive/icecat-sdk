@@ -5,7 +5,7 @@ declare(strict_types=1);
  * ResultProduct
  *
  * @copyright Copyright © 2020 Rapid dive. All rights reserved.
- * @author    rapiddive1@gmai.com
+ * @author    Rapid Dive <rapiddive1@gmail.com>
  */
 
 namespace Rapiddive\Icecat\Model;
@@ -15,6 +15,7 @@ use SimpleXMLElement;
 
 /**
  * Class ResultProduct
+ *
  * @package Rapiddive\Icecat\Model
  */
 class ResultProduct
@@ -33,6 +34,7 @@ class ResultProduct
 
     /**
      * ResultProduct constructor.
+     *
      * @param SimpleXMLElement|null $XMLElement
      */
     public function __construct(
@@ -93,7 +95,7 @@ class ResultProduct
     }
 
     /**
-     * @param SimpleXMLElement $response
+     * @param  SimpleXMLElement $response
      * @return bool
      * @throws IcecatException
      */
@@ -101,15 +103,17 @@ class ResultProduct
     {
         if (isset($response->Product->attributes()->ErrorMessage)) {
             $code = isset($response->Product->attributes()->Code) ? (int)$response->Product->attributes()->Code : null;
-            throw new IcecatException((string)$response->Product->attributes()->ErrorMessage,
-                $code);
+            throw new IcecatException(
+                (string)$response->Product->attributes()->ErrorMessage,
+                $code
+            );
         }
 
         return true;
     }
 
     /**
-     * @param string $attr
+     * @param  string $attr
      * @return mixed
      * @throws IcecatException
      */
@@ -146,7 +150,7 @@ class ResultProduct
     }
 
     /**
-     * @param string $node
+     * @param  string $node
      * @return mixed
      * @throws IcecatException
      */
@@ -228,7 +232,7 @@ class ResultProduct
     }
 
     /**
-     * @param $name
+     * @param  $name
      * @return mixed
      * @throws IcecatException
      */
@@ -274,9 +278,8 @@ class ResultProduct
         $additionalImages = [];
         foreach ($this->getProductGallery() as $productImages) {
             foreach ($productImages as $productImage) {
-                if (
-                    (isset($productImage->{self::ATTRIBUTES})
-                        && $productImage->{self::ATTRIBUTES}->Original === '')
+                if ((isset($productImage->{self::ATTRIBUTES})
+                    && $productImage->{self::ATTRIBUTES}->Original === '')
                     || !isset($productImage->{self::ATTRIBUTES})
                 ) {
                     continue;
@@ -306,7 +309,7 @@ class ResultProduct
      * @return mixed
      * @throws IcecatException
      */
-    public function ProductMultimediaObject()
+    public function getProductMultimediaObject()
     {
         return $this->getProduct()->ProductMultimediaObject;
     }

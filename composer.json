@@ -4,14 +4,22 @@
   "description": "An easy-to-use Library to access Icecat XML Catalog",
   "keywords": [
     "icecat",
+    "ice",
+    "ice cat",
+    "data-sheets",
     "product data",
     "product catalog"
   ],
+  "version": "1.0.4",
   "license": "MIT",
   "authors": [
     {
       "name": "Vinay Shah",
       "email": "vinay.sudhir@gmail.com"
+    },
+    {
+      "name": "Rapid Dive",
+      "email": "rapiddive1@gmail.com"
     }
   ],
   "require": {
@@ -29,6 +37,11 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "^8.5"
+    "phpunit/phpunit": "^8.5",
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
   }
 }

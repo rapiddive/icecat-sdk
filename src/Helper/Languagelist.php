@@ -5,13 +5,14 @@ declare(strict_types=1);
  * Languagelist
  *
  * @copyright Copyright © 2020 Rapid dive. All rights reserved.
- * @author    rapiddive1@gmai.com
+ * @author    Rapid Dive <rapiddive1@gmail.com>
  */
 
 namespace Rapiddive\Icecat\Helper;
 
 /**
  * Class Languagelist
+ *
  * @package Rapiddive\Icecat\Helper
  */
 class Languagelist

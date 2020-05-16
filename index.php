@@ -7,14 +7,14 @@ use Rapiddive\Icecat\Model\ResultProduct;
 
 require 'vendor/autoload.php';
 
-$username = '';
-$password = '';
+$username = 'crunchersweb';
+$password = '85xGqb8hQ!';
 
 $iceCat = new Rapiddive\Icecat\IcecatBase($username, $password, __DIR__);
 
 /** @var FetchProduct $iceCatProduct */
 $iceCatProduct = new FetchProduct($iceCat);
-$p = ['088698857212'];
+$p = ['193015166462', '088698857212'];
 
 foreach ($p as $value) {
     /** @var  $product */
