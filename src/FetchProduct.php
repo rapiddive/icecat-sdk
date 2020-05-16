@@ -40,7 +40,7 @@ class FetchProduct
      * @param  string $lang
      * @return SimpleXMLElement
      */
-    public function getArticleByEAN(string $ean, $lang = null)
+    public function getArticleByEAN(string $ean, string $lang = null)
     {
         if (!isset($this->products[$ean])) {
             if (!$lang) {
