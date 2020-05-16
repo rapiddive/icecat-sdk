@@ -13,6 +13,10 @@ namespace Rapiddive\Icecat;
 use Rapiddive\Icecat\Helper\Languagelist;
 use SimpleXMLElement;
 
+/**
+ * Class FetchProduct
+ * @package Rapiddive\Icecat
+ */
 class FetchProduct
 {
     /**

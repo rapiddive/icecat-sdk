@@ -17,6 +17,10 @@ use Kevinrob\GuzzleCache\CacheMiddleware;
 use Kevinrob\GuzzleCache\Storage\Psr6CacheStorage;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
+/**
+ * Class IcecatBase
+ * @package Rapiddive\Icecat
+ */
 class IcecatBase
 {
     /**
