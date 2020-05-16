@@ -7,8 +7,8 @@ use Rapiddive\Icecat\Model\ResultProduct;
 
 require 'vendor/autoload.php';
 
-$username = 'crunchersweb';
-$password = '85xGqb8hQ!';
+$username = '';
+$password = '';
 
 $iceCat = new Rapiddive\Icecat\IcecatBase($username, $password, __DIR__);
 
